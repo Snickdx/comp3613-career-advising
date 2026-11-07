@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Pathfind{% endblock %}
+
+{% block content %}
+<div class="landing">
+  {% include "_paths.html" %}
+
+  <header class="landing-nav">
+    <a class="brand-wordmark" href="{{ url_for('index_view') }}">Pathfind</a>
+    <div class="landing-nav-actions">
+      {% if user_logged_in %}
+      <a class="btn-landing btn-landing-ghost" href="{{ app_home }}">Open Pathfind</a>
+      <a class="btn-landing btn-landing-ghost" href="{{ url_for('logout') }}">Sign out</a>
+      {% else %}
+      <a class="btn-landing btn-landing-ghost" href="{{ url_for('login_view') }}">Sign in</a>
+      <a class="btn-landing btn-landing-primary" href="{{ url_for('register_view') }}">Get started</a>
+      {% endif %}
+    </div>
+  </header>
+
+  <main class="landing-hero">
+    <h1 class="brand-wordmark">Pathfind</h1>
+    <p class="landing-lead">
+      Align the courses you take with the careers you want — see where each route leads, and which courses still stand between you and it.
+    </p>
+    <div class="landing-cta">
+      {% if user_logged_in %}
+      <a class="btn-landing btn-landing-primary" href="{{ app_home }}">Continue</a>
+      {% else %}
+      <a class="btn-landing btn-landing-primary" href="{{ url_for('register_view') }}">Create account</a>
+      <a class="btn-landing btn-landing-ghost" href="{{ url_for('login_view') }}">Sign in</a>
+      {% endif %}
+    </div>
+  </main>
+
+  <footer class="landing-foot">
+    After <code>python manage.py init</code>: advisor / adv-dev · student / stud-dev
+  </footer>
+</div>
+{% endblock %}
